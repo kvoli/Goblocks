@@ -20,7 +20,8 @@ type Change struct {
 }
 
 type configStruct struct {
-	Separator string
+	LSeparator string
+	RSeparator string
 	Actions   []map[string]interface{}
 }
 //Based on "timer" prorty from config file

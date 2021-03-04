@@ -30,8 +30,8 @@ func main() {
 	recChannel := make(chan util.Change)
 	for i, action := range config.Actions {
 		//Assign a cell for each separator/prefix/action/suffix
-		if config.Separator != "" {
-			blocks = append(blocks, config.Separator)
+		if config.LSeparator != "" {
+			blocks = append(blocks, config.LSeparator)
 		}
 		if value, ok := action["prefix"]; ok {
 			blocks = append(blocks, value.(string))
@@ -40,6 +40,9 @@ func main() {
 		actionId := len(blocks) - 1
 		if value, ok := action["suffix"]; ok {
 			blocks = append(blocks, value.(string))
+		}
+		if config.RSeparator != "" {
+			blocks = append(blocks, config.RSeparator)
 		}
 		//Create an unique channel for each action
 		channels[i] = make(chan bool)
